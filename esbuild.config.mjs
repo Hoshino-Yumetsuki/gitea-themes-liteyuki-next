@@ -1,9 +1,7 @@
-import { transform } from 'esbuild'
+import { build as esbuild } from 'esbuild'
 import {
     existsSync,
     mkdirSync,
-    readFileSync,
-    writeFileSync,
     copyFileSync,
     rmSync,
     statSync
@@ -23,54 +21,89 @@ async function bundleCSS() {
     const outputDir = 'dist/public/assets/css'
     ensureDirectoryExists(outputDir)
 
-    // Bundle theme-liteyuki-magipoke
-    const liteyukiFiles = sync(
-        'src/public/assets/css/theme-liteyuki-magipoke*.css'
-    )
+    // Define theme files to process
+    const themeFiles = [
+        {
+            entryFile: 'src/public/assets/css/theme-liteyuki-magipoke.css',
+            outputFile: join(outputDir, 'theme-liteyuki-magipoke.css'),
+            themeName: 'theme-liteyuki-magipoke'
+        },
+        {
+            entryFile: 'src/public/assets/css/theme-snowykami.css',
+            outputFile: join(outputDir, 'theme-snowykami.css'),
+            themeName: 'theme-snowykami'
+        }
+    ]
 
-    if (liteyukiFiles.length > 0) {
-        await bundleThemeFiles(
-            liteyukiFiles,
-            join(outputDir, 'theme-liteyuki-magipoke.css'),
-            'theme-liteyuki-magipoke'
-        )
-    }
-
-    // Bundle theme-snowykami
-    const snowykamiFiles = sync('src/public/assets/css/theme-snowykami.css')
-
-    if (snowykamiFiles.length > 0) {
-        await bundleThemeFiles(
-            snowykamiFiles,
-            join(outputDir, 'theme-snowykami.css'),
-            'theme-snowykami'
-        )
+    // Process each theme file
+    for (const theme of themeFiles) {
+        if (existsSync(theme.entryFile)) {
+            console.log(`Processing theme: ${theme.themeName}`)
+            await bundleThemeFile(
+                theme.entryFile,
+                theme.outputFile,
+                theme.themeName
+            )
+        } else {
+            console.error(`Error: Theme file not found: ${theme.entryFile}`)
+        }
     }
 }
 
 // Helper function to bundle theme files
-async function bundleThemeFiles(files, outputFile, themeName) {
-    // Read all CSS files and concatenate them
-    let combinedCSS = `/* ${themeName} theme bundle */\n`
-    for (const file of files) {
-        const content = readFileSync(file, 'utf8')
-        combinedCSS += `/* ${file} */\n${content}\n\n`
-    }
+async function bundleThemeFile(entryFile, outputFile, themeName) {
+    try {
+        console.log(
+            `Bundling ${themeName} from ${entryFile} to ${outputFile}...`
+        )
 
-    // Use esbuild to minify the combined CSS
-    const result = await transform(combinedCSS, {
-        loader: 'css',
-        minify: true
-    })
+        // Use esbuild's build API to handle imports
+        const result = await esbuild({
+            entryPoints: [entryFile],
+            outfile: outputFile,
+            bundle: true,
+            minify: true,
+            loader: {
+                '.css': 'css'
+            },
+            logLevel: 'info',
+            banner: {
+                css: `/* ${themeName} theme bundle */\n`
+            },
+            write: true,
+            metafile: true,
+            external: ['*.jpg', '*.png', '*.svg', '*.gif', 'https://*'] // Don't try to bundle image files or external URLs
+        })
 
-    // Write the result to the output file
-    writeFileSync(outputFile, result.code)
+        // Log any warnings
+        if (result.warnings && result.warnings.length > 0) {
+            console.warn(`Warnings for ${themeName}:`, result.warnings)
+        }
 
-    // Check if the output file is empty
-    const stats = existsSync(outputFile) ? statSync(outputFile) : { size: 0 }
+        // Check if the output file is empty or exists
+        if (!existsSync(outputFile)) {
+            console.error(`Error: Output file was not created: ${outputFile}`)
+            return
+        }
 
-    if (stats.size === 0) {
-        console.error(`Warning: ${outputFile} is empty!`)
+        const stats = statSync(outputFile)
+        if (stats.size === 0) {
+            console.error(`Warning: ${outputFile} is empty!`)
+        } else {
+            console.log(
+                `Successfully bundled ${themeName} theme to ${outputFile} (${(
+                    stats.size / 1024
+                ).toFixed(1)}kb)`
+            )
+        }
+    } catch (error) {
+        console.error(`Error bundling ${themeName} theme:`, error.message)
+        if (error.errors) {
+            console.error(
+                `Detailed errors for ${themeName}:`,
+                JSON.stringify(error.errors, null, 2)
+            )
+        }
     }
 }
 
@@ -99,7 +132,7 @@ async function copyOtherFiles() {
 }
 
 // Main build function
-async function build() {
+async function mainBuild() {
     // Clean dist directory if it exists
     if (existsSync('dist')) {
         rmSync('dist', { recursive: true, force: true })
@@ -114,7 +147,7 @@ async function build() {
 }
 
 // Run the build
-build().catch((err) => {
+mainBuild().catch((err) => {
     console.error('Build failed:', err)
     process.exit(1)
 })
