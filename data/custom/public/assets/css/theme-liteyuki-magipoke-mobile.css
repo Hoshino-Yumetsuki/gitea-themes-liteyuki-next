@@ -1,1 +1,122 @@
 /* 移动端选项 */
+
+@media (max-width: 768px) {
+    :root {
+        /* 移动端调整圆角 */
+        --border-radius-bar: 3rem;
+        --border-radius-big: 1rem;
+        --border-radius-small: 0.5rem;
+        --border-radius-menu: 0.5rem;
+
+        /* 调整边框和阴影 */
+        --border: 1px solid rgba(255, 255, 255, 0.1);
+        --box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.25);
+
+        /* 调整底色透明度 */
+        --ui-background-color: rgba(48, 48, 48, 0.6);
+        --menu-background-color: rgba(48, 48, 48, 0.7);
+
+        /* 调整字体大小 */
+        font-size: 15px;
+    }
+
+    /* 改善移动端容器间距 */
+    .ui.container {
+        padding: 1rem !important;
+        margin-bottom: 1rem !important;
+        margin-left: 0.5rem !important;
+        margin-right: 0.5rem !important;
+    }
+
+    /* 改善移动端表格显示 */
+    .ui.table {
+        font-size: 0.9rem;
+    }
+
+    .ui.table th,
+    .ui.table td {
+        padding: 0.6em !important;
+    }
+
+    /* 改善移动端代码显示 */
+    pre.code-block {
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    /* 改善移动端导航 */
+    #navbar {
+        padding: 0.5rem !important;
+    }
+
+    #navbar .item {
+        padding: 0.5rem 0.75rem !important;
+    }
+
+    /* 改善移动端按钮 */
+    .ui.button {
+        padding: 0.6em 1em !important;
+    }
+
+    /* 改善移动端表单 */
+    .ui.form input,
+    .ui.input>input {
+        padding: 0.5em 1em !important;
+    }
+
+    /* 改善移动端菜单 */
+    .ui.menu .item {
+        padding: 0.6em 0.8em !important;
+    }
+
+    /* 改善移动端页脚 */
+    footer {
+        padding: 0.75rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* 改善移动端标签 */
+    .ui.label {
+        padding: 0.5em 0.8em !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+/* 针对更小屏幕的优化 */
+@media (max-width: 480px) {
+    :root {
+        /* 更小屏幕调整圆角 */
+        --border-radius-bar: 2rem;
+        --border-radius-big: 0.75rem;
+        --border-radius-small: 0.4rem;
+
+        /* 调整字体大小 */
+        font-size: 14px;
+    }
+
+    /* 更小屏幕容器间距 */
+    .ui.container {
+        padding: 0.75rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    /* 更小屏幕代码显示 */
+    pre.code-block {
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+    }
+
+    /* 更小屏幕按钮 */
+    .ui.button {
+        padding: 0.5em 0.8em !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* 更小屏幕标签 */
+    .ui.label {
+        padding: 0.4em 0.6em !important;
+        font-size: 0.8rem !important;
+    }
+}

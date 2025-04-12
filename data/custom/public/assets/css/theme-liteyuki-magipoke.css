@@ -7,7 +7,7 @@
 :root {
 
     --is-dark-theme: false !important;
-    --text: #d8d8d8;
+    --text: #e0e0e0;
 
     --white: #ffffff;
 
@@ -15,29 +15,29 @@
     /* 主题标识符 */
 
     /* 圆角区 */
-    --border-radius-bar: 5rem;
+    --border-radius-bar: 4rem;
     /* 长条的圆角 */
-    --border-radius-big: 2rem;
-    --border-radius-small: 1rem;
-    --border-radius-menu: 1rem;
+    --border-radius-big: 1.5rem;
+    --border-radius-small: 0.75rem;
+    --border-radius-menu: 0.75rem;
     --border-radius: var(--border-radius-small) !important;
     /* 覆盖原有 */
 
     /* 边框 */
-    --border: 2px solid rgba(255, 255, 255, 0.1);
+    --border: 1px solid rgba(255, 255, 255, 0.15);
 
     /* 毛玻璃区 */
-    --backdrop-filter: blur(10px);
+    --backdrop-filter: blur(12px);
 
     /* 阴影区 */
-    --box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    --box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
 
     /* 底色 */
-    --ui-background-color: rgba(64, 64, 64, 0.4);
-    --menu-background-color: rgba(64, 64, 64, 0.6);
-    --navbar-background-color: rgba(0, 0, 0, 0.6);
-    --code-background-color: rgba(0, 0, 0, 0.6);
-    --tab-background-color: rgba(0, 0, 0, 0.4);
+    --ui-background-color: rgba(48, 48, 48, 0.5);
+    --menu-background-color: rgba(48, 48, 48, 0.65);
+    --navbar-background-color: rgba(0, 0, 0, 0.5);
+    --code-background-color: rgba(0, 0, 0, 0.5);
+    --tab-background-color: rgba(0, 0, 0, 0.35);
 
     /* 选项卡高度 */
     --code-tab-height: 2.5rem;
@@ -45,11 +45,15 @@
     --code-copy-button-size: 3rem;
 
     /* 所有渐变 */
-    --transition-time: all 0.2s;
+    --transition-time: all 0.25s;
     transition: var(--transition-time) !important;
 
     /* 贡献方块颜色 */
     --color-secondary-alpha-60: rgba(0, 0, 0, 0.5);
+    
+    /* 行高和间距 */
+    --line-height-base: 1.6;
+    --paragraph-spacing: 1rem;
 }
 
 body {
@@ -58,6 +62,8 @@ body {
     background-attachment: fixed !important;
     background-repeat: repeat-y !important;
     background-position: center center !important;
+    line-height: var(--line-height-base);
+    font-size: 14px;
 }
 
 body::before {
@@ -67,7 +73,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.25);
     pointer-events: none;
     z-index: -1;
 }
@@ -103,10 +109,9 @@ footer {
     background: var(--navbar-background-color) !important;
 }
 
-#navbar .item {
-    /*    border-radius: var(--border-radius-bar) !important;*/
-}
-
+/* #navbar .item {
+    border-radius: var(--border-radius-bar) !important;
+} */
 
 .menu .item:hover{
     background: var(--transparency-dark-15) !important;
@@ -117,9 +122,9 @@ footer {
     color: var(--white) !important;
 }
 
-#navbar .dropdown .item {
-    /*    border-radius: var(--border-radius-menu) !important;*/
-}
+/* #navbar .dropdown .item {
+    /* border-radius: var(--border-radius-menu) !important;
+} */
 
 /*  */
 .ui.label,
@@ -195,8 +200,8 @@ footer {
     backdrop-filter: var(--backdrop-filter) !important;
     border-radius: var(--border-radius-big) !important;
     box-shadow: var(--box-shadow) !important;
-    padding: 1rem !important;
-    margin-bottom: 1rem !important;
+    padding: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
 }
 
 .ui.header {
@@ -227,10 +232,10 @@ footer {
     color: var(--white) !important;
 }
 
-.ui.dropdown .menu .item {
-    /*    border-radius: var(--border-radius-menu) !important;*/
-    /*    background-color: var(--menu-background-color) !important;*/
-}
+/* .ui.dropdown .menu .item {
+    border-radius: var(--border-radius-menu) !important;
+    background-color: var(--menu-background-color) !important;
+} */
 
 /* 设置页面左边垂直菜单 */
 .ui.vertical.menu {
@@ -354,6 +359,10 @@ pre.code-block {
     /* 使绝对定位基于此元素 */
     padding-top: var(--code-item-margin);
     /* 为选项卡预留空间，避免内容被覆盖 */
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Source Code Pro', Consolas, monospace !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0.3px !important;
 }
 
 .code-copy.ui.button {
@@ -427,12 +436,13 @@ pre.code-block {
     border-radius: var(--border-radius-small) !important;
 }
 
+/*
 pre,
 code,
 kbd,
 samp {
-    /* font-family: var(--font-family-code) !important; */
-}
+    font-family: var(--font-family-code) !important;
+} */
 
 /* 代码块高亮色 */
 
@@ -516,8 +526,8 @@ table{
     transition: all 0.2s;
 }
 
-::-webkit-scrollbar-thumb:hover{
-}
+/* ::-webkit-scrollbar-thumb:hover{
+} */
 
 
 .flex-item {
@@ -594,4 +604,33 @@ table{
     backdrop-filter: blur(16px);
     border-radius: 16px 16px 16px 6px;
     left: -10px;
+}
+
+/* 代码块 */
+.code-view {
+    border-radius: var(--border-radius-small) !important;
+    overflow: hidden !important;
+    margin-bottom: var(--paragraph-spacing) !important;
+}
+
+/* 表格样式优化 */
+.ui.table {
+    border-radius: var(--border-radius-small) !important;
+    border: var(--border) !important;
+    background-color: var(--ui-background-color) !important;
+}
+
+.ui.table th {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    padding: 0.8em !important;
+    font-weight: 600 !important;
+}
+
+.ui.table td {
+    padding: 0.8em !important;
+    line-height: 1.5 !important;
+}
+
+.ui.table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
 }
