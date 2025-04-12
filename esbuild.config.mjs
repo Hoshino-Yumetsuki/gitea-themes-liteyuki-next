@@ -4,10 +4,12 @@ import {
     mkdirSync,
     copyFileSync,
     rmSync,
-    statSync
+    statSync,
+    readdirSync,
+    lstatSync
 } from 'fs'
-import { join, normalize, dirname } from 'path'
-import { sync } from 'glob'
+import { join, normalize, dirname, relative } from 'path'
+import { minify } from 'terser'
 
 // Ensure output directories exist
 const ensureDirectoryExists = (dirPath) => {
@@ -109,8 +111,24 @@ async function bundleThemeFile(entryFile, outputFile, themeName) {
 
 // Copy other files
 async function copyOtherFiles() {
+    // Function to recursively get all files from a directory
+    function getAllFiles(dirPath, arrayOfFiles = []) {
+        const files = readdirSync(dirPath)
+        
+        files.forEach(file => {
+            const filePath = join(dirPath, file)
+            if (lstatSync(filePath).isDirectory()) {
+                arrayOfFiles = getAllFiles(filePath, arrayOfFiles)
+            } else {
+                arrayOfFiles.push(filePath)
+            }
+        })
+        
+        return arrayOfFiles
+    }
+    
     // Get all files from src directory
-    const allFiles = sync('src/**/*', { nodir: true })
+    const allFiles = getAllFiles('src')
 
     // Filter out CSS files that we've already bundled
     const cssPattern = normalize('src/public/assets/css')
@@ -120,15 +138,45 @@ async function copyOtherFiles() {
     })
 
     // Copy each file to the dist directory
-    filesToCopy.forEach((file) => {
+    for (const file of filesToCopy) {
         const normalizedFile = normalize(file)
         const destPath = normalizedFile.replace(
             normalize('src/'),
             normalize('dist/')
         )
         ensureDirectoryExists(dirname(destPath))
-        copyFileSync(normalizedFile, destPath)
-    })
+        
+        // If it's a JavaScript file, minify it with terser
+        if (normalizedFile.endsWith('.js')) {
+            await minifyJSFile(normalizedFile, destPath)
+        } else {
+            copyFileSync(normalizedFile, destPath)
+        }
+    }
+}
+
+// Minify JavaScript files with terser
+async function minifyJSFile(srcPath, destPath) {
+    try {
+        const code = await import('fs').then(fs => fs.promises.readFile(srcPath, 'utf8'))
+        const result = await minify(code, {
+            compress: true,
+            mangle: true
+        })
+        
+        if (result.code) {
+            await import('fs').then(fs => fs.promises.writeFile(destPath, result.code))
+            console.log(`Minified JS file: ${relative(process.cwd(), destPath)}`)
+        } else {
+            // Fallback to copy if minification fails
+            copyFileSync(srcPath, destPath)
+            console.warn(`Warning: Could not minify ${relative(process.cwd(), srcPath)}, copied instead`)
+        }
+    } catch (error) {
+        console.error(`Error minifying ${relative(process.cwd(), srcPath)}:`, error.message)
+        // Fallback to copy if minification fails
+        copyFileSync(srcPath, destPath)
+    }
 }
 
 // Main build function
