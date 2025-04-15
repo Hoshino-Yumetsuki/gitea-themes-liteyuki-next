@@ -2,6 +2,7 @@
 <html lang="{{ctx.Locale.Lang}}" data-theme="{{UserThemeName .SignedUser}}">
 
 <head>
+    <script src="https://fastly.jsdelivr.net/npm/live2d-widgets@0/autoload.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{if .Title}}{{.Title}} - {{end}}{{if .Repository.Name}}{{.Repository.Name}} - {{end}}{{AppName}}</title>
     {{if .ManifestData}}
