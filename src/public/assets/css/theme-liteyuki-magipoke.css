@@ -89,11 +89,10 @@ a.item:visited {
     border-radius: 50% !important;
 }
 
-/* 足 */
 footer {
     display: flex;
     flex-direction: column !important;
-    z-index: 1;
+    /* z-index: 1; */
 
     backdrop-filter: var(--backdrop-filter) !important;
     background-color: var(--menu-background-color) !important;
