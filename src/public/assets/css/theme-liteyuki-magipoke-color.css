@@ -1,10 +1,10 @@
 :root {
     --is-dark-theme: false !important;
     /* 背景与文本颜色 */
-    --code-background: #2a2e36 !important;
-    /* One Dark Pro Italic Vivid 背景色 - 稍微调暗 */
-    --code-color: #d0d0d0 !important;
-    /* One Dark Pro 文本色 - 增加亮度 */
+    --code-background: #1e2127 !important;
+    /* 更深的背景色，增强对比度 */
+    --code-color: #e0e0e0 !important;
+    /* 更亮的文本色，提高可读性 */
 
     /* 错误及高亮 */
     --code-err-background: #e06c75 !important;
@@ -133,31 +133,38 @@
 :root {
     color-scheme: light;
     --is-dark-theme: false;
-    --color-primary: #4b83f0;
-    --color-primary-hover: #5e90f1;
-    --color-primary-dark-1: #3a76ef;
-    --color-primary-dark-2: #2a6aea;
-    --color-primary-dark-3: #1e62e6;
-    --color-primary-dark-4: #1859d8;
-    --color-primary-dark-5: #1651c9;
-    --color-primary-dark-6: #1449bb;
-    --color-primary-dark-7: #1241ac;
-    --color-primary-light-1: #5c8ff1;
-    --color-primary-light-2: #6c9af2;
-    --color-primary-light-3: #7da6f3;
-    --color-primary-light-4: #8db1f4;
-    --color-primary-light-5: #9ebdf5;
-    --color-primary-light-6: #aec8f6;
-    --color-primary-light-7: #bfd4f7;
-    --color-primary-alpha-10: rgba(75, 131, 240, 0.1);
-    --color-primary-alpha-20: rgba(75, 131, 240, 0.2);
-    --color-primary-alpha-30: rgba(75, 131, 240, 0.3);
-    --color-primary-alpha-40: rgba(75, 131, 240, 0.4);
-    --color-primary-alpha-50: rgba(75, 131, 240, 0.5);
-    --color-primary-alpha-60: rgba(75, 131, 240, 0.6);
-    --color-primary-alpha-70: rgba(75, 131, 240, 0.7);
-    --color-primary-alpha-80: rgba(75, 131, 240, 0.8);
-    --color-primary-alpha-90: rgba(75, 131, 240, 0.9);
+    --color-primary: #5c8df7;
+    --color-primary-hover: #6e9af8;
+    --color-primary-dark-1: #4b7ef6;
+    --color-primary-dark-2: #3a6ff5;
+    --color-primary-dark-3: #2960f4;
+    --color-primary-dark-4: #1851f3;
+    --color-primary-dark-5: #0c45ed;
+    --color-primary-dark-6: #0b3ed6;
+    --color-primary-dark-7: #0a37c0;
+    --color-primary-light-1: #6d9af8;
+    --color-primary-light-2: #7da7f9;
+    --color-primary-light-3: #8eb3fa;
+    --color-primary-light-4: #9ec0fb;
+    --color-primary-light-5: #afccfc;
+    --color-primary-light-6: #bfd9fd;
+    --color-primary-light-7: #d0e5fe;
+    --color-primary-alpha-10: rgba(92, 141, 247, 0.1);
+    --color-primary-alpha-20: rgba(92, 141, 247, 0.2);
+    --color-primary-alpha-30: rgba(92, 141, 247, 0.3);
+    --color-primary-alpha-40: rgba(92, 141, 247, 0.4);
+    --color-primary-alpha-50: rgba(92, 141, 247, 0.5);
+    --color-primary-alpha-60: rgba(92, 141, 247, 0.6);
+    --color-primary-alpha-70: rgba(92, 141, 247, 0.7);
+    --color-primary-alpha-80: rgba(92, 141, 247, 0.8);
+    --color-primary-alpha-90: rgba(92, 141, 247, 0.9);
+    
+    /* 新增渐变色 */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary), #7a6cf7) !important;
+    --gradient-success: linear-gradient(135deg, var(--color-green), #56b6c2) !important;
+    --gradient-danger: linear-gradient(135deg, var(--color-red), #d19a66) !important;
+    --gradient-warning: linear-gradient(135deg, var(--color-orange), var(--color-yellow)) !important;
+    --gradient-info: linear-gradient(135deg, var(--color-blue), var(--color-teal)) !important;
 }
 
 .text.primary {
@@ -600,4 +607,158 @@
 
 .ui.zucchini.label {
     background-color: var(--color-zucchini) !important;
+}
+
+/* 按钮样式增强 */
+.ui.primary.button, .ui.primary.buttons .button {
+    background: var(--gradient-primary);
+    color: white !important;
+    border: none !important;
+}
+
+.ui.green.button, .ui.green.buttons .button {
+    background: var(--gradient-success);
+    color: white !important;
+    border: none !important;
+}
+
+.ui.red.button, .ui.red.buttons .button {
+    background: var(--gradient-danger);
+    color: white !important;
+    border: none !important;
+}
+
+.ui.orange.button, .ui.orange.buttons .button,
+.ui.yellow.button, .ui.yellow.buttons .button {
+    background: var(--gradient-warning);
+    color: white !important;
+    border: none !important;
+}
+
+.ui.blue.button, .ui.blue.buttons .button,
+.ui.teal.button, .ui.teal.buttons .button {
+    background: var(--gradient-info);
+    color: white !important;
+    border: none !important;
+}
+
+/* 标签样式增强 */
+.ui.primary.label {
+    background: var(--gradient-primary);
+    color: white !important;
+    border: none !important;
+}
+
+.ui.green.label {
+    background: var(--gradient-success);
+    color: white !important;
+    border: none !important;
+}
+
+.ui.red.label {
+    background: var(--gradient-danger);
+    color: white !important;
+    border: none !important;
+}
+
+.ui.orange.label, .ui.yellow.label {
+    background: var(--gradient-warning);
+    color: white !important;
+    border: none !important;
+}
+
+.ui.blue.label, .ui.teal.label {
+    background: var(--gradient-info);
+    color: white !important;
+    border: none !important;
+}
+
+/* 状态标签增强 */
+.ui.green.label:before,
+.ui.red.label:before,
+.ui.yellow.label:before,
+.ui.blue.label:before,
+.ui.purple.label:before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* 链接样式增强 */
+a {
+    color: var(--color-primary);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-primary-light-3);
+    text-decoration: none;
+}
+
+/* 输入框聚焦状态 */
+.ui.input.focus > input, .ui.input > input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 1px var(--color-primary-alpha-30) !important;
+}
+
+/* 下拉菜单样式 */
+.ui.dropdown .menu {
+    background-color: var(--ui-background-color) !important;
+    backdrop-filter: var(--backdrop-filter) !important;
+    border-radius: var(--border-radius-small) !important;
+    box-shadow: var(--box-shadow) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    overflow: hidden;
+}
+
+.ui.dropdown .menu .item:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.ui.dropdown .menu .active.item {
+    background-color: var(--color-primary-alpha-20) !important;
+    color: var(--color-primary) !important;
+}
+
+/* 菜单项增强 */
+.menu .item {
+    transition: all 0.2s ease !important;
+}
+
+.menu .item:hover {
+    transform: translateY(-1px);
+}
+
+.menu .active.item {
+    font-weight: 600 !important;
+}
+
+/* 提示框样式 */
+.ui.message {
+    background-color: var(--ui-background-color) !important;
+    backdrop-filter: var(--backdrop-filter) !important;
+    border-radius: var(--border-radius-small) !important;
+    box-shadow: var(--box-shadow) !important;
+    border-left: 4px solid var(--color-primary) !important;
+}
+
+.ui.info.message {
+    border-left-color: var(--color-blue) !important;
+}
+
+.ui.success.message {
+    border-left-color: var(--color-green) !important;
+}
+
+.ui.warning.message {
+    border-left-color: var(--color-orange) !important;
+}
+
+.ui.error.message {
+    border-left-color: var(--color-red) !important;
 }

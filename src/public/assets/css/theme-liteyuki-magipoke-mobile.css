@@ -3,29 +3,33 @@
 @media (max-width: 768px) {
     :root {
         /* 移动端调整圆角 */
-        --border-radius-bar: 3rem;
-        --border-radius-big: 1rem;
-        --border-radius-small: 0.5rem;
-        --border-radius-menu: 0.5rem;
+        --border-radius-bar: 2rem;
+        --border-radius-big: 0.75rem;
+        --border-radius-small: 0.4rem;
+        --border-radius-menu: 0.4rem;
 
         /* 调整边框和阴影 */
         --border: 1px solid rgba(255, 255, 255, 0.1);
-        --box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.25);
+        --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 
         /* 调整底色透明度 */
-        --ui-background-color: rgba(48, 48, 48, 0.6);
-        --menu-background-color: rgba(48, 48, 48, 0.7);
+        --ui-background-color: rgba(48, 48, 48, 0.75);
+        --menu-background-color: rgba(48, 48, 48, 0.85);
+        --navbar-background-color: rgba(0, 0, 0, 0.75);
 
         /* 调整字体大小 */
         font-size: 15px;
     }
 
+    body {
+        background-attachment: scroll !important;
+    }
+
     /* 改善移动端容器间距 */
     .ui.container {
         padding: 1rem !important;
-        margin-bottom: 1rem !important;
-        margin-left: 0.5rem !important;
-        margin-right: 0.5rem !important;
+        margin: 0.75rem 0.5rem !important;
+        border-radius: var(--border-radius-small) !important;
     }
 
     /* 改善移动端表格显示 */
@@ -44,11 +48,16 @@
         line-height: 1.4 !important;
         padding-left: 0.5rem !important;
         padding-right: 0.5rem !important;
+        max-width: 100%;
+        overflow-x: auto;
     }
 
     /* 改善移动端导航 */
     #navbar {
         padding: 0.5rem !important;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
 
     #navbar .item {
@@ -58,6 +67,10 @@
     /* 改善移动端按钮 */
     .ui.button {
         padding: 0.6em 1em !important;
+    }
+
+    .ui.button:hover {
+        transform: none !important;
     }
 
     /* 改善移动端表单 */
@@ -71,10 +84,16 @@
         padding: 0.6em 0.8em !important;
     }
 
+    .menu .item:hover {
+        transform: none !important;
+    }
+
     /* 改善移动端页脚 */
     footer {
         padding: 0.75rem !important;
         font-size: 0.85rem !important;
+        margin: 0.5rem !important;
+        border-radius: var(--border-radius-small) !important;
     }
 
     /* 改善移动端标签 */
@@ -82,15 +101,46 @@
         padding: 0.5em 0.8em !important;
         font-size: 0.85rem !important;
     }
+
+    /* 改善移动端卡片 */
+    .ui.card, .ui.cards>.card {
+        width: 100% !important;
+        margin: 0.5rem 0 !important;
+    }
+
+    .ui.card:hover, .ui.cards>.card:hover {
+        transform: none !important;
+    }
+
+    /* 改善移动端下拉菜单 */
+    .ui.dropdown .menu {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    /* 改善移动端模态框 */
+    .ui.modal {
+        width: 95% !important;
+        margin: 0 auto !important;
+    }
+
+    /* 移动端触摸优化 */
+    .ui.button, 
+    .ui.menu .item,
+    .ui.dropdown,
+    .ui.checkbox,
+    a {
+        touch-action: manipulation;
+    }
 }
 
 /* 针对更小屏幕的优化 */
 @media (max-width: 480px) {
     :root {
         /* 更小屏幕调整圆角 */
-        --border-radius-bar: 2rem;
-        --border-radius-big: 0.75rem;
-        --border-radius-small: 0.4rem;
+        --border-radius-bar: 1.5rem;
+        --border-radius-big: 0.6rem;
+        --border-radius-small: 0.3rem;
 
         /* 调整字体大小 */
         font-size: 14px;
@@ -99,13 +149,14 @@
     /* 更小屏幕容器间距 */
     .ui.container {
         padding: 0.75rem !important;
-        margin-bottom: 0.75rem !important;
+        margin: 0.5rem 0.25rem !important;
     }
 
     /* 更小屏幕代码显示 */
     pre.code-block {
         font-size: 11px !important;
         line-height: 1.3 !important;
+        padding: 0.5rem !important;
     }
 
     /* 更小屏幕按钮 */
@@ -118,5 +169,41 @@
     .ui.label {
         padding: 0.4em 0.6em !important;
         font-size: 0.8rem !important;
+    }
+
+    /* 更小屏幕表格 */
+    .ui.table {
+        font-size: 0.8rem !important;
+    }
+
+    /* 更小屏幕导航 */
+    #navbar .item {
+        padding: 0.4rem 0.6rem !important;
+    }
+
+    /* 更小屏幕页脚 */
+    footer {
+        padding: 0.6rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* 更小屏幕输入框 */
+    .ui.input>input {
+        padding: 0.4em 0.8em !important;
+    }
+}
+
+/* 针对暗模式的优化 */
+@media (prefers-color-scheme: dark) {
+    body::before {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* 针对减少动画的优化 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
     }
 }
