@@ -114,7 +114,7 @@ async function copyOtherFiles() {
     // Function to recursively get all files from a directory
     function getAllFiles(dirPath, arrayOfFiles = []) {
         const files = readdirSync(dirPath)
-        
+
         files.forEach(file => {
             const filePath = join(dirPath, file)
             if (lstatSync(filePath).isDirectory()) {
@@ -123,10 +123,10 @@ async function copyOtherFiles() {
                 arrayOfFiles.push(filePath)
             }
         })
-        
+
         return arrayOfFiles
     }
-    
+
     // Get all files from src directory
     const allFiles = getAllFiles('src')
 
@@ -145,7 +145,7 @@ async function copyOtherFiles() {
             normalize('dist/')
         )
         ensureDirectoryExists(dirname(destPath))
-        
+
         // If it's a JavaScript file, minify it with terser
         if (normalizedFile.endsWith('.js')) {
             await minifyJSFile(normalizedFile, destPath)
@@ -163,7 +163,7 @@ async function minifyJSFile(srcPath, destPath) {
             compress: true,
             mangle: true
         })
-        
+
         if (result.code) {
             await import('fs').then(fs => fs.promises.writeFile(destPath, result.code))
             console.log(`Minified JS file: ${relative(process.cwd(), destPath)}`)
