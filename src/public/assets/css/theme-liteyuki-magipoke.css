@@ -51,17 +51,17 @@
 
     /* 贡献方块颜色 */
     --color-secondary-alpha-60: rgba(0, 0, 0, 0.5);
-    
+
     /* 行高和间距 */
     --line-height-base: 1.6;
     --paragraph-spacing: 1rem;
-    
+
     /* 字体 */
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-    background: url(https://img.r2.yumetsuki.moe/q78kg/e89b14711dc102ca7d1dd8c4966a760d.png);
+    background: url(../img/bg/e89b14711dc102ca7d1dd8c4966a760d.png);
     background-size: cover !important;
     background-attachment: fixed !important;
     background-repeat: repeat-y !important;
@@ -121,7 +121,7 @@ footer {
     box-shadow: var(--box-shadow) !important;
 }
 
-.menu .item:hover{
+.menu .item:hover {
     background: var(--transparency-dark-15) !important;
     transform: translateY(-2px);
 }
@@ -484,7 +484,8 @@ samp {
 
 /* 修改label-list行距 #3 */
 .label-list .ui.label {
-    margin-bottom: 0.5em; /* 根据需要调整数值 */
+    margin-bottom: 0.5em;
+    /* 根据需要调整数值 */
 }
 
 /* relative-time 加上背景色 #3 */
@@ -516,7 +517,7 @@ table>tbody>tr:last-child>td:last-child {
     border-bottom-right-radius: var(--border-radius-small) !important;
 }
 
-table>thead>tr{
+table>thead>tr {
     border-top-left-radius: var(--border-radius-small) !important;
     border-top-right-radius: var(--border-radius-small) !important;
 }
@@ -527,7 +528,7 @@ table>thead>tr {
 }
 
 /* 添加边界 */
-table{
+table {
     border-radius: var(--border-radius-small) !important;
     box-shadow: var(--box-shadow) !important;
     border: var(--border) !important;
@@ -539,7 +540,7 @@ table{
 } */
 
 /* 自定义滚动条样式 */
-*{
+* {
     scrollbar-color: initial !important;
 }
 
@@ -551,7 +552,7 @@ table{
     transition: all 0.2s;
 }
 
-::-webkit-scrollbar:hover{
+::-webkit-scrollbar:hover {
     width: 12px;
     height: 12px;
 }
@@ -581,16 +582,20 @@ table{
 #set-bg-container {
     text-align: center;
 }
+
 #url-input {
     position: fixed;
     top: 0;
     display: none;
     margin-top: 10px;
 }
-#url-input input{
+
+#url-input input {
     min-width: 200px;
 }
-#set-bg-btn, #save-url-btn {
+
+#set-bg-btn,
+#save-url-btn {
     padding: 3px 10px;
     margin: 5px;
     color: #3e6c81;
@@ -598,7 +603,7 @@ table{
     cursor: pointer;
 }
 
-.flex-item:hover{
+.flex-item:hover {
     box-shadow: #dfe7ff57 3px 3px 5px 0px;
 }
 
@@ -623,19 +628,19 @@ table{
     padding-top: 12px;
 }
 
-.flex-item-body relative-time{
+.flex-item-body relative-time {
     color: #36c370;
     font-size: 11px;
     margin-left: 10px;
 }
 
-.flex-item-main .flex-item-body:last-of-type{
+.flex-item-main .flex-item-body:last-of-type {
     color: #a3a3a3;
     font-size: 11px;
     margin-top: 10px;
 }
 
-#tippy-1{
+#tippy-1 {
     background-image: linear-gradient(199deg, var(--transparency-dark-25), #000000 100%);
     backdrop-filter: blur(16px);
     border-radius: 16px 16px 16px 6px;
@@ -693,7 +698,8 @@ pre.code-block {
 }
 
 /* 卡片样式 */
-.ui.card, .ui.cards>.card {
+.ui.card,
+.ui.cards>.card {
     background-color: var(--ui-background-color) !important;
     backdrop-filter: var(--backdrop-filter) !important;
     border-radius: var(--border-radius-small) !important;
@@ -702,7 +708,8 @@ pre.code-block {
     transition: all 0.3s ease;
 }
 
-.ui.card:hover, .ui.cards>.card:hover {
+.ui.card:hover,
+.ui.cards>.card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25) !important;
 }

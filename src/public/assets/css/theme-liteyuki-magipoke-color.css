@@ -158,7 +158,7 @@
     --color-primary-alpha-70: rgba(92, 141, 247, 0.7);
     --color-primary-alpha-80: rgba(92, 141, 247, 0.8);
     --color-primary-alpha-90: rgba(92, 141, 247, 0.9);
-    
+
     /* 新增渐变色 */
     --gradient-primary: linear-gradient(135deg, var(--color-primary), #7a6cf7) !important;
     --gradient-success: linear-gradient(135deg, var(--color-green), #56b6c2) !important;
@@ -610,33 +610,40 @@
 }
 
 /* 按钮样式增强 */
-.ui.primary.button, .ui.primary.buttons .button {
+.ui.primary.button,
+.ui.primary.buttons .button {
     background: var(--gradient-primary);
     color: white !important;
     border: none !important;
 }
 
-.ui.green.button, .ui.green.buttons .button {
+.ui.green.button,
+.ui.green.buttons .button {
     background: var(--gradient-success);
     color: white !important;
     border: none !important;
 }
 
-.ui.red.button, .ui.red.buttons .button {
+.ui.red.button,
+.ui.red.buttons .button {
     background: var(--gradient-danger);
     color: white !important;
     border: none !important;
 }
 
-.ui.orange.button, .ui.orange.buttons .button,
-.ui.yellow.button, .ui.yellow.buttons .button {
+.ui.orange.button,
+.ui.orange.buttons .button,
+.ui.yellow.button,
+.ui.yellow.buttons .button {
     background: var(--gradient-warning);
     color: white !important;
     border: none !important;
 }
 
-.ui.blue.button, .ui.blue.buttons .button,
-.ui.teal.button, .ui.teal.buttons .button {
+.ui.blue.button,
+.ui.blue.buttons .button,
+.ui.teal.button,
+.ui.teal.buttons .button {
     background: var(--gradient-info);
     color: white !important;
     border: none !important;
@@ -661,13 +668,15 @@
     border: none !important;
 }
 
-.ui.orange.label, .ui.yellow.label {
+.ui.orange.label,
+.ui.yellow.label {
     background: var(--gradient-warning);
     color: white !important;
     border: none !important;
 }
 
-.ui.blue.label, .ui.teal.label {
+.ui.blue.label,
+.ui.teal.label {
     background: var(--gradient-info);
     color: white !important;
     border: none !important;
@@ -701,7 +710,8 @@ a:hover {
 }
 
 /* 输入框聚焦状态 */
-.ui.input.focus > input, .ui.input > input:focus {
+.ui.input.focus>input,
+.ui.input>input:focus {
     border-color: var(--color-primary) !important;
     box-shadow: 0 0 0 1px var(--color-primary-alpha-30) !important;
 }

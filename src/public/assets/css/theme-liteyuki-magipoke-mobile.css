@@ -103,12 +103,14 @@
     }
 
     /* 改善移动端卡片 */
-    .ui.card, .ui.cards>.card {
+    .ui.card,
+    .ui.cards>.card {
         width: 100% !important;
         margin: 0.5rem 0 !important;
     }
 
-    .ui.card:hover, .ui.cards>.card:hover {
+    .ui.card:hover,
+    .ui.cards>.card:hover {
         transform: none !important;
     }
 
@@ -125,7 +127,7 @@
     }
 
     /* 移动端触摸优化 */
-    .ui.button, 
+    .ui.button,
     .ui.menu .item,
     .ui.dropdown,
     .ui.checkbox,
