@@ -242,6 +242,10 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.column.tw-flex.tw-flex-col.tw-gap-4.tw-max-w-2xl.tw-m-auto .ui.container.fluid {
+    z-index: 100 !important;
+}
+
 .ui.header {
     border-top-left-radius: var(--border-radius-small) !important;
     border-top-right-radius: var(--border-radius-small) !important;
