@@ -26,12 +26,12 @@ async function bundleCSS() {
     // Define theme files to process
     const themeFiles = [
         {
-            entryFile: 'src/public/assets/css/theme-liteyuki-magipoke.css',
+            entryFile: 'src/public/assets/css/theme-liteyuki-magipoke/theme-liteyuki-magipoke.css',
             outputFile: join(outputDir, 'theme-liteyuki-magipoke.css'),
             themeName: 'theme-liteyuki-magipoke'
         },
         {
-            entryFile: 'src/public/assets/css/theme-snowykami.css',
+            entryFile: 'src/public/assets/css/theme-snowykami/theme-snowykami.css',
             outputFile: join(outputDir, 'theme-snowykami.css'),
             themeName: 'theme-snowykami'
         }
