@@ -231,6 +231,8 @@ footer {
 }
 
 .ui.container {
+    position: relative;
+    z-index: -1;
     background-color: var(--ui-background-color) !important;
     backdrop-filter: var(--backdrop-filter) !important;
     border-radius: var(--border-radius-big) !important;
