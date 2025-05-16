@@ -776,3 +776,8 @@ pre.code-block {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
 }
+
+#waifu #live2d {
+    width: 250px;
+    height: 250px;
+}
