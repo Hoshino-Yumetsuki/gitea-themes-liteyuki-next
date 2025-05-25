@@ -8,7 +8,7 @@
 :root {
 
     --is-dark-theme: false !important;
-    --text: #e0e0e0;
+    --text: #d8d8d8;
 
     --white: #ffffff;
 
@@ -16,29 +16,29 @@
     /* 主题标识符 */
 
     /* 圆角区 */
-    --border-radius-bar: 2rem;
+    --border-radius-bar: 5rem;
     /* 长条的圆角 */
-    --border-radius-big: 1rem;
-    --border-radius-small: 0.5rem;
-    --border-radius-menu: 0.5rem;
+    --border-radius-big: 2rem;
+    --border-radius-small: 1rem;
+    --border-radius-menu: 1rem;
     --border-radius: var(--border-radius-small) !important;
     /* 覆盖原有 */
 
     /* 边框 */
-    --border: 1px solid rgba(255, 255, 255, 0.15);
+    --border: 2px solid rgba(255, 255, 255, 0.1);
 
     /* 毛玻璃区 */
-    --backdrop-filter: blur(16px);
+    --backdrop-filter: blur(10px);
 
     /* 阴影区 */
-    --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 
     /* 底色 */
-    --ui-background-color: rgba(48, 48, 48, 0.65);
-    --menu-background-color: rgba(48, 48, 48, 0.75);
-    --navbar-background-color: rgba(0, 0, 0, 0.65);
-    --code-background-color: rgba(0, 0, 0, 0.5);
-    --tab-background-color: rgba(0, 0, 0, 0.35);
+    --ui-background-color: rgba(64, 64, 64, 0.4);
+    --menu-background-color: rgba(64, 64, 64, 0.6);
+    --navbar-background-color: rgba(0, 0, 0, 0.6);
+    --code-background-color: rgba(0, 0, 0, 0.6);
+    --tab-background-color: rgba(0, 0, 0, 0.4);
 
     /* 选项卡高度 */
     --code-tab-height: 2.5rem;
@@ -46,7 +46,7 @@
     --code-copy-button-size: 3rem;
 
     /* 所有渐变 */
-    --transition-time: all 0.25s;
+    --transition-time: all 0.2s;
     transition: var(--transition-time) !important;
 
     /* 贡献方块颜色 */
@@ -79,7 +79,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.2);
     pointer-events: none;
     z-index: -1;
 }
@@ -93,21 +93,16 @@ a.item:visited {
 
 .avatar {
     border-radius: 50% !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 footer {
     display: flex;
     flex-direction: column !important;
-    /* z-index: 1; */
+    z-index: 1;
 
     backdrop-filter: var(--backdrop-filter) !important;
     background-color: var(--menu-background-color) !important;
-    padding: 0.75rem !important;
-    border-radius: var(--border-radius-small) !important;
-    margin-top: 1rem !important;
-    box-shadow: var(--box-shadow) !important;
+    padding: 0.5rem !important;
 
     .left-links {
         margin-bottom: 0.5rem !important;
@@ -117,50 +112,29 @@ footer {
 #navbar {
     border-bottom: var(--border) !important;
     background: var(--navbar-background-color) !important;
-    backdrop-filter: var(--backdrop-filter) !important;
-    box-shadow: var(--box-shadow) !important;
 }
+
+
 
 .menu .item:hover {
     background: var(--transparency-dark-15) !important;
-    transform: translateY(-2px);
 }
 
 #navbar .item.active {
     background-color: var(--transparency-dark-25) !important;
     color: var(--white) !important;
-    position: relative;
 }
 
-#navbar .item.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30%;
-    height: 2px;
-    background-color: var(--color-primary);
-    border-radius: 2px;
-}
 
-/*  */
+
 .ui.label,
 .ui.button,
 .ui.basic.buttons .button,
 .ui.basic.button {
     border-radius: var(--border-radius-bar);
     border: var(--border);
-    font-weight: 500;
-    transition: all 0.2s ease;
 }
 
-.ui.button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* 菜单，长条半圆 */
 .ui.action.input>.dropdown:last-child,
 .ui.action.input>.button:last-child,
 .ui.action.input>.buttons:last-child>.button {
