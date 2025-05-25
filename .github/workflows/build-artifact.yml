@@ -1,0 +1,37 @@
+name: Build and Generate Artifact
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Enable Yarn
+        run: |
+          corepack enable
+          corepack use yarn
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build Project
+        run: yarn build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gitea-themes-liteyuki
+          path: dist/
